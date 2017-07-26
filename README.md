@@ -1,4 +1,4 @@
-# PinTuanBao Web
+# 思路乐购-新疆商城
 
 ## 提纲/目录
 
@@ -13,7 +13,7 @@
 
 ## 源代码位置
 
-> 源码地址：[Gitcafe](https://git.coding.net/sweetysoft/pin_tuan_bao_web.git)
+> 源码地址：[Gitcafe](https://git.coding.net/sweetysoft/si_lu_le_gou_web.git)
 
 ## 服务器要求
 
@@ -29,7 +29,7 @@
 1. 下载并配置项目文件
 
 	```
-	$ git clone https://gitcafe.com/happy-software/pin_tuan_bao_web.git
+	$ git clone https://git.coding.net/sweetysoft/si_lu_le_gou_web.git
 	$ cd pin_tuan_bao_web
   $ 修改config/database.yml文件，调整好其中数据库的配置
   $ 修改config/log4r.yml文件，调整好其中的日志配置
