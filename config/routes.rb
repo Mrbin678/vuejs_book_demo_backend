@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
 
-  namespace "monitor" do
-    resources "logs"
-  end
-
-  mount Ckeditor::Engine => '/ckeditor'
-
   devise_for :users
 
   resources :users
 
   root 'users#index'
+
+  namespace "monitor" do
+    resources "logs"
+  end
+
+  mount Ckeditor::Engine => '/ckeditor'
 
   namespace :interface do
     resources :wechat, only: [:index]
