@@ -1,6 +1,9 @@
-bucket: 'pintuanbao'
-operator: 'ptb8888888'
-password: 'ptb88888888'
+carrierwave:
+  bucket: 'siweitech'
+  operator: 'siweitech'
+  password: 'daydayup'
+  bucket_host: 'http://siweitech.b0.upaiyun.com'
+
 image_domain_name: 'http://pintuanbao.b0.upaiyun.com'
 #h5_server: 'http://ptbh5.siwei.me/?#'
 #web_server: 'http://ptbweb.siwei.me'

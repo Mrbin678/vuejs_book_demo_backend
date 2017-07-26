@@ -1,0 +1,39 @@
+<%= form_for @good, :html => { :class => "form-horizontal good" } do |f| %>
+
+  <div class="control-group">
+    <%= f.label "商品名称", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "商品描述", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "图片", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :image_url, :class => 'form-control' %>
+      <% if @good.image_url.present? %>
+        <%= image_tag @good.image_url, style: "width: 200px;" %>
+      <% end%>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "商品分类", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :categroy_id, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <br/>
+
+  <%= f.submit "确定", :class => 'btn btn-primary' %>
+  <%= link_to "返回", goods_path, :class => 'btn btn-default'  %>
+
+<% end %>

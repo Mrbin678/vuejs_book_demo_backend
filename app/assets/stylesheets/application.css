@@ -48,22 +48,6 @@ dl.show_main dt {
   font-weight: normal;
 }
 
-/* line 146, ../../app/assets/stylesheets/basic.css.scss */
-dl.show_main dd {
-  width: 270px;
-  padding: 0 5px;
-  height: 30px;
-  line-height: 30px;
-  float: left;
-  background: #f8f8f8;
-  margin-left: 0px;
-  margin-right: 2px;
-  color: #000000;
-  margin-top: 2px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 /* line 26, ../../app/assets/stylesheets/bootstrap_and_overrides.css.scss */
 fieldset {
   padding: 0;
