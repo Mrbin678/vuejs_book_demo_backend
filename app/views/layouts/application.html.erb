@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "合力保系统后台" %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+
+  <% if current_user.present? %>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container" style="position: relative;">
+        <% if current_user.present? %>
+            <div class="locbar navbar-fixed-top">
+              您现在的位置：<%= yield :locbar %>
+            </div>
+        <% end %>
+        <a class="navbar-brand" href="<%= root_path %>">合力保</a>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+
+            <li class="dropdown <%= yield(:products) %>" >
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品管理<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "评论管理", root_path %>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown <%= yield(:coupons) %>" >
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">收入支出管理<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "收入管理", root_path %>
+                </li>
+              </ul>
+            </li>
+
+            <li class="<%= yield(:manager) %>"><%= link_to "管理员列表", root_path  %></li>
+
+            <li class="dropdown <%= yield(:about_us) %>" >
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其它管理<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "后台日志", monitor_logs_path %>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+
+          <ul class="nav navbar-nav" style='float:right'>
+            <li class="<%= yield(:edit_users_on) %>">
+              <%= link_to "#{current_user.try :email}", edit_user_registration_path %></li>
+            <li>
+              <%= link_to '退出', destroy_user_session_path, :method => :delete  %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+    <div class="container">
+      <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-9">
+          <%#= bootstrap_flash %>
+          <%= yield %>
+        </div>
+      </div><!--/row-->
+    </div> <!-- /container -->
+  <%= render '/layouts/messages' %>
+  </body>
+</html>

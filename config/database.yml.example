@@ -1,0 +1,16 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+
+development:
+  <<: *default
+  database: pin_tuan_bao
+test:
+  <<: *default
+  database: pin_tuan_bao_test
+production:
+  <<: *default
+  database: pin_tuan_bao
