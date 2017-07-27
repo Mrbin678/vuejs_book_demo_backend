@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :goods do
       collection do
         get :get_goods
+        get :goods_details
       end
     end
   end
