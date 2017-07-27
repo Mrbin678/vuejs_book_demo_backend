@@ -17,18 +17,23 @@ class GoodsController < ApplicationController
   end
 
   def create
-    Tool.upload_image(params[:good], :image_url)
     @good = Good.new(good_params)
     @good.save
+
+    if params[:photos].present?
+      Tool.upload_images(params[:photos][:image_url], @good.id, "good_id", GoodsPhoto)
+    end
 
     redirect_to goods_path, notice: '新建成功'
   end
 
   def update
-    @good.image_url.destroy_all if @good.image_url.present?  #将原来的图片删掉
-
-    Tool.upload_image(params[:good], :image_url)
     @good.update(good_params)
+
+    if params[:photos].present?
+      @good.goods_photos.destroy_all   #将原来的图片删掉
+      Tool.upload_images(params[:photos][:image_url], @good.id, "good_id", GoodsPhoto)
+    end
 
     redirect_to goods_path, notice: '编辑成功'
   end
@@ -45,6 +50,6 @@ class GoodsController < ApplicationController
     end
 
     def good_params
-      params.require(:good).permit(:name, :description, :image_url, :categroy_id)
+      params.require(:good).permit(:name, :description, :price, :category_id)
     end
 end

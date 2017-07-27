@@ -41,13 +41,13 @@ class Tool < ActiveRecord::Base
       format_str = new_file_name.split(".")
       new_file_name = "#{rand_file_name(15)}.#{format_str.last}"
 
-      remote_file = "/image/queentown/#{new_file_name}"       #远程保存图片的位置
+      remote_file = "/image/silulegou/#{new_file_name}"       #远程保存图片的位置
       response = upyun.put remote_file, upload_file.read
       picture_url = "#{Settings.carrierwave.bucket_host}#{remote_file}"
 
       Rails.logger.info "picture_url  ===== #{picture_url} ===="
       image_model.create(
-          avatar: picture_url,
+          image_url: picture_url,
           "#{parent_column}": parent_id
         )
       Rails.logger.info "picture_url  ===== #{picture_url} ===="
