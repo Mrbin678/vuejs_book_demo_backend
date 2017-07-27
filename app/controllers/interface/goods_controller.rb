@@ -9,7 +9,7 @@ class Interface::GoodsController < Interface::ApplicationController
           id: good.id,
           name: good.name,
           description: good.description,
-          image_url: good.image_url,
+          image_url: good.goods_photos.first.image_url,
           category_id: good.category_id
         }
       }
