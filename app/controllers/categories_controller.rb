@@ -1,39 +1,43 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
-
   def index
-    @categories = Category.all
-    respond_with(@categories)
+    @categories = Category.all.page(params[:page])
   end
 
   def show
-    respond_with(@category)
   end
 
   def new
     @category = Category.new
-    respond_with(@category)
   end
 
   def edit
   end
 
   def create
+    Tool.upload_image(params[:category], :category_img)
+
     @category = Category.new(category_params)
     @category.save
-    respond_with(@category)
+
+    redirect_to categories_path, notice: '新建成功'
   end
 
   def update
+
+    @category.category_img.destroy_all if @category.category_img.present?  #将原来的图片删掉
+
+    Tool.upload_image(params[:category], :category_img)
     @category.update(category_params)
-    respond_with(@category)
+
+    redirect_to categories_path, notice: '编辑成功'
   end
 
   def destroy
     @category.destroy
-    respond_with(@category)
+
+    redirect_to categories_path, notice: '删除成功'
   end
 
   private
