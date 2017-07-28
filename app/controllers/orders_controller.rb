@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   respond_to :html
 
   def index
-    @orders = Order.all
+    @orders = Order.all.page(params[:page])
     respond_with(@orders)
   end
 

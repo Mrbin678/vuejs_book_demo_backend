@@ -34,5 +34,37 @@ class Interface::GoodsController < Interface::ApplicationController
   end
 
   def buy
+    if params[:good_id].present?
+      Order.transaction do
+        good = Good.find(params[:good_id])
+        order = Order.new(
+          :receiver_address => params[:mobile_user_address],
+          :receiver_name => params[:mobile_user_name],
+          :receiver_phone => params[:mobile_user_phone],
+          :total_cost => params[:total_cost],
+          :order_status => false,
+          :guest_remarks => params[:guest_remarks]
+        )
+        order.generate_order_id
+        order.save
+        Rails.logger.info("订单号======== #{order.order_id}")
+
+        buy_good = BuyGood.new(
+          :order_id => order.id,
+          :good_id => params[:good_id],
+          :quantity => params[:buy_count]
+        )
+        buy_good.save
+
+        render json: {
+          amount: order.total_cost,
+          order_number: order.order_id,
+          order_id: order.id
+        }
+      end
+    else
+      render json: { message: '支付失败' }
+    end
   end
+
 end

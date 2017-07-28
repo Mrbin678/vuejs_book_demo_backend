@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       collection do
         get :get_goods
         get :goods_details
-        get :buy
+        post :buy
       end
     end
   end
