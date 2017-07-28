@@ -10,9 +10,11 @@
   <dt><strong>商品描述:</strong></dt>
   <dd><%= @good.description %></dd>
   <dt><strong>商品单价:</strong></dt>
-  <td><%= @good.price %>元</td>
+  <dd><%= @good.price %>元</dd>
   <dt><strong>图片:</strong></dt>
-  <dd><%= image_tag @good.image_url %></dd>
+  <% @good.goods_photos.each do |photo| %>
+    <dd><%= image_tag photo.image_url, style: "width: 200px;"%></dd>
+  <% end %>
 </dl>
 
 <%= link_to "编辑", edit_good_path(@good), :class => 'btn btn-primary' %>

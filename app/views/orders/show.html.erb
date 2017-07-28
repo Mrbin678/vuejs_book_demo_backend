@@ -11,6 +11,18 @@
 </p>
 
 <p>
+  <strong>购买物品:</strong>
+  <% @order.buy_goods.each do |buy_good| %>
+  <br/>
+  <%=  buy_good.good.name %>
+  ￥<%=  buy_good.good.price %> x <%= buy_good.quantity %>
+  <br/>
+  <%#=  image_tag buy_good.good.goods_photos.first.image_url%>
+  <%= image_tag buy_good.show_goods_first_image, style: "width: 200px;" %>
+  <% end %>
+</p>
+
+<p>
   <strong>收货人:</strong>
   <%= @order.receiver_name %>
 </p>
@@ -32,7 +44,7 @@
 
 <p>
   <strong>订单状态:</strong>
-  <%= @order.order_status %>
+  <%= @order.order_status_text %>
 </p>
 
 <p>
