@@ -24,12 +24,15 @@ class Interface::GoodsController < Interface::ApplicationController
         id: good.id,
         name: good.name,
         description: good.description,
-        price: good.price,
+        price: good.price.to_f,
         category_id: good.category_id
       },
       good_images: good.goods_photos.map { |photo|
          photo.image_url
       }
     }
+  end
+
+  def buy
   end
 end

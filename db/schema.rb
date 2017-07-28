@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727062943) do
+ActiveRecord::Schema.define(version: 20170728030431) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -46,6 +46,18 @@ ActiveRecord::Schema.define(version: 20170727062943) do
     t.datetime "created_at",     comment: "创建时间"
     t.string   "remote_ip",      comment: "远程IP"
     t.string   "restful_method", comment: "get/post/put/delete"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "order_id"
+    t.string   "receiver_name"
+    t.string   "receiver_address"
+    t.string   "receiver_phone"
+    t.float    "total_cost",       limit: 24
+    t.boolean  "order_status"
+    t.string   "guest_remarks"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

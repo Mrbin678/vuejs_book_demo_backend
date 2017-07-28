@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :orders
+
   resources :categories
 
   resources :goods
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
       collection do
         get :get_goods
         get :goods_details
+        get :buy
       end
     end
   end
