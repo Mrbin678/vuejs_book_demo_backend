@@ -7,10 +7,10 @@ default: &default
 
 development:
   <<: *default
-  database: pin_tuan_bao
+  database: si_lu_le_gou_web
 test:
   <<: *default
-  database: pin_tuan_bao_test
+  database: si_lu_le_gou_web_test
 production:
   <<: *default
-  database: pin_tuan_bao
+  database: si_lu_le_gou_web
