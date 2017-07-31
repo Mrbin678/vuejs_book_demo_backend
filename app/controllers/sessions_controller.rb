@@ -31,10 +31,10 @@ class SessionsController < ApplicationController
         @customer.save(:validate=>false)
       end
 
-      Rails.logger.info "跳转到首页 ===== 路径 === #{@h5_server}?open_id=#{@openid}"
-      redirect_to "#{@h5_server}?open_id=#{@openid}"
-
     end
+
+    Rails.logger.info "跳转到首页 ===== 路径 === #{@h5_server}?open_id=#{@openid}"
+    redirect_to "#{@h5_server}?open_id=#{@openid}"
   end
 
   protected
