@@ -4,32 +4,25 @@ carrierwave:
   password: 'daydayup'
   bucket_host: 'http://siweitech.b0.upaiyun.com'
 
-image_domain_name: 'http://pintuanbao.b0.upaiyun.com'
-#h5_server: 'http://ptbh5.siwei.me/?#'
-#web_server: 'http://ptbweb.siwei.me'
+image_domain_name: 'http://siweitech.b0.upaiyun.com'
+
+h5_server: 'http://ptbh5.siwei.me/?#'
+web_server: 'http://ptbweb.siwei.me'
+
 sms_key: 'dec71e0688f54287ff598e139dc285ff'
 sms_url: "https://sms.yunpian.com/v1/sms/send.json"
-wechat_download_image_url: 'http://file.api.weixin.qq.com/cgi-bin/media/get'
 
-h5_server: 'http://weixinh5.helibao.cc/?#'
-web_server: 'http://api.helibao.cc'
+wechat_download_image_url: 'http://file.api.weixin.qq.com/cgi-bin/media/get'
 
 customer:
   default_avatar: 'http://pintuanbao.b0.upaiyun.com/image/galleries/btn_vacancy@2x.png'
 
-
 #微信支付配置
 wechat:
-  #正式的
-  app_id: 'wx65638b356254d409'
-  app_secret: '9ec979b1151fd131ba660135794cb0b6'
-  mch_sid: '1428442702' #同是商户号码
-  mch_bid: '1428442702' #同是商户号码
-
-  #app_id: 'wxf328143a03fa2a26' #公司的
-  #app_secret: '1e039f42a4c2c67cb386ee7f307d9d7a' #公司的
-  #mch_sid: '1429416302'  # 注意：这个是服务商号码.
-  #mch_bid: '1423670202'  # 注意：这个是商户号码.
+  app_id: 'wxf328143a03fa2a26' #公司的
+  app_secret: '1e039f42a4c2c67cb386ee7f307d9d7a' #公司的
+  mch_sid: '1429416302'  # 注意：这个是服务商号码.
+  mch_bid: '1423670202'  # 注意：这个是商户号码.
 
   pay_url: 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers'
   key: 'daydayupDAYDAYUPdaydayup88888888'
@@ -38,44 +31,6 @@ wechat:
   user_pay_url: 'https://api.mch.weixin.qq.com/pay/unifiedorder'
   notify_url: 'http://api.helibao.cc/interface/payments/notify'
   body: '思瑞明创合力保用户支付测试'
-
-# 团有效期(秒) 两天
-validity: 172800
-# 新人奖励红包
-hongbao: 200
-
-# 消息配置
-#管理员消息
-manager_activity: 1
-#领队我的消息
-my_message: 2
-#获客动态
-get_customer: 3
-#下家动态
-invited_person: 4
-#达人动态
-great_man: 5
-
-#产品价格分类内容类型(比较特殊的抽取出来在拼团的时候需要显示)
-#保障年龄
-age_range: 1
-#保障期限
-deadline: 2
-#保障计划
-plan: 3
-#其它
-other: 4
-#性别
-gender: 5
-#职业
-job: 6
-
-
-#思瑞明创upyun
-#bucket: 'siweitech'
-#operator: 'siweitech'
-#password: 'daydayup'
-#image_domain_name: 'http://siweitech.b0.upaiyun.com'
 
 #删除判断
 can_delete: false
