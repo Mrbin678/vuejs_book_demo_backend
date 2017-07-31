@@ -2,7 +2,7 @@ class GoodsController < ApplicationController
   before_action :set_good, only: [:show, :edit, :update, :destroy]
 
   def index
-    @goods = Good.all.page(params[:page])
+    @goods = Good.all.page(params[:page]).order("created_at desc")
     @goods = @goods.where("name like ?", "%#{params[:name]}%") if params[:name].present?
   end
 
