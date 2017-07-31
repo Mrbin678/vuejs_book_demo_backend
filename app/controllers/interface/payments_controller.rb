@@ -27,17 +27,13 @@ class Interface::PaymentsController < Interface::ApplicationController
     begin_time = Time.now.to_f
     Rails.logger.info "==== 用户支付了一笔钱 ===="
     Rails.logger.info "== request_id: #{request_id}, request begin at: #{begin_time}"
-
-    customer = Customer.find_by_open_id(params[:open_id])
-
-    Rails.logger.info "== 预支付金额 price == #{price}"
-    #price = '1'  测试
+    Rails.logger.info "== 预支付金额 price == #{params[:total_cost]}"
 
     result = Tool.user_pay({
           # 这里是以分作为单位。 微信企业支付接口是这么要求的。
           :total_fee => (params[:total_cost] * 100).to_i , # 支付总金额 不能有小数点(文档要求)
-          :openid => customer.open_id, # 用户open_id
-          :out_trade_no => order_number, # 订单号，保证唯一
+          :openid => params[:open_id], # 用户open_id
+          :out_trade_no => params[:order_number], # 订单号，保证唯一
           })
 
     render :json => result
@@ -59,28 +55,28 @@ class Interface::PaymentsController < Interface::ApplicationController
     Rails.logger.info "== notify result: #{result}"
 
 		if WxPay::Sign.verify?(result)
-      order_number = result["out_trade_no"].to_s
+      order_id = result["out_trade_no"].to_s
       logger.info "==  success result == #{result.inspect}"
       logger.info "==  sign verified"
       Rails.logger.info "== order_no: #{result["out_trade_no"]}-------"
-			@order = Order.find_by_order_number(order_number)
+			@order = Order.find_by_order_id(order_id)
       logger.info "==  #{@order.inspect} order !!!!!----"
+
 			unless @order.blank?
         logger.info "==  order is not blank !!!!!----"
         time = Time.now.to_datetime
         payed_price = result["total_fee"].to_f / 100.0
+
         Order.transaction do
-          if @order.group_buying_id.blank? and @order.order_status == 'group'
-            #创建团
-            @order.update_attributes(:payment_status => 'payed',
-                                     :price => payed_price,
-                                     :payed_at => time,
-                                     :group_buying_id => group_buying.id,
-                                     :payed_response => result.to_s
-                                    )
-          end
+            @order.update_attributes(
+              :order_status => true,
+              :payed_price => payed_price,
+              :payed_at => time,
+              :payed_response => result.to_s
+            )
         end
 			end
+
 			render :xml => { return_code: "SUCCESS" }.to_xml(root: 'xml', dasherize: false)
 		else
       logger.info "==  error result == #{result.inspect}"
@@ -88,6 +84,5 @@ class Interface::PaymentsController < Interface::ApplicationController
 			render :xml => { return_code: "FAIL", return_msg: "" }.to_xml(root: 'xml', dasherize: false)
 		end
   end
-
 
 end
