@@ -1,20 +1,15 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
-
   def index
-    @customers = Customer.all
-    respond_with(@customers)
+    @customers = Customer.all.page(params[:page]).order("created_at desc")
   end
 
   def show
-    respond_with(@customer)
   end
 
   def new
     @customer = Customer.new
-    respond_with(@customer)
   end
 
   def edit
@@ -23,17 +18,14 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     @customer.save
-    respond_with(@customer)
   end
 
   def update
     @customer.update(customer_params)
-    respond_with(@customer)
   end
 
   def destroy
     @customer.destroy
-    respond_with(@customer)
   end
 
   private
