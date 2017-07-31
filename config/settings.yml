@@ -21,15 +21,15 @@ customer:
 #微信支付配置
 wechat:
   #正式的
-  app_id: 'wx65638b356254d409'
-  app_secret: '9ec979b1151fd131ba660135794cb0b6'
-  mch_sid: '1428442702' #同是商户号码
-  mch_bid: '1428442702' #同是商户号码
+  #app_id: 'wx65638b356254d409'
+  #app_secret: '9ec979b1151fd131ba660135794cb0b6'
+  #mch_sid: '1428442702' #同是商户号码
+  #mch_bid: '1428442702' #同是商户号码
 
-  #app_id: 'wxf328143a03fa2a26' #公司的
-  #app_secret: '1e039f42a4c2c67cb386ee7f307d9d7a' #公司的
-  #mch_sid: '1429416302'  # 注意：这个是服务商号码.
-  #mch_bid: '1423670202'  # 注意：这个是商户号码.
+  app_id: 'wxf328143a03fa2a26' #公司的
+  app_secret: '1e039f42a4c2c67cb386ee7f307d9d7a' #公司的
+  mch_sid: '1429416302'  # 注意：这个是服务商号码.
+  mch_bid: '1423670202'  # 注意：这个是商户号码.
 
   pay_url: 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers'
   key: 'daydayupDAYDAYUPdaydayup88888888'
