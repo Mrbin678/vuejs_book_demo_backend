@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   #生成下一个六位号码
   #  #默认从000001开始
   def gener_number(number)
-    number.succ
+    rand(number)
   end
 
   #当前时间(年月日)
@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
   def generate_order_id
     last_order_id = Order.last.order_id rescue ''
 
-    init_id = "#{gener_date}#{gener_number('000000')}"
+    init_id = "#{gener_date}#{gener_number(999999)}"
 
     if last_order_id.present? and last_order_id[0..7] == gener_date
       self.order_id = last_order_id.succ
