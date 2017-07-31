@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731092724) do
+ActiveRecord::Schema.define(version: 20170731095049) do
 
   create_table "buy_goods", force: true do |t|
     t.integer  "good_id"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170731092724) do
     t.float    "payed_price",      limit: 24
     t.string   "payed_at"
     t.string   "payed_response"
+    t.integer  "customer_id"
   end
 
   create_table "users", force: true do |t|
