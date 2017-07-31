@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
         @customer = Customer.new(:open_id => @openid,
                                  :avatar=>wechat_user_info.fetch('headimgurl'),
                                  :name=>wechat_user_info.fetch('nickname')
+                                )
         @customer.save(:validate=>false)
       rescue Exception => e
         @customer = Customer.new(:open_id => @openid,
