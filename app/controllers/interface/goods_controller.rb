@@ -44,6 +44,7 @@ class Interface::GoodsController < Interface::ApplicationController
           :total_cost => params[:total_cost],
           :order_status => false,
           :guest_remarks => params[:guest_remarks]
+          #:customer_id => params[:customer_id]
         )
         order.generate_order_id
         order.save
@@ -65,6 +66,22 @@ class Interface::GoodsController < Interface::ApplicationController
     else
       render json: { message: '支付失败' }
     end
+  end
+
+  def buy_success
+    #order = Order.find_by_order_id(params[:order_id])
+    order = Order.last
+
+    render :json => {
+      order:
+        {
+          id: order.id,
+          receiver_name: order.receiver_name,
+          receiver_address: order.receiver_address,
+          receiver_phone: order.receiver_phone,
+          total_cost: order.total_cost,
+        }
+    }
   end
 
 end
