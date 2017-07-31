@@ -1,8 +1,8 @@
 class Order < ActiveRecord::Base
   has_many :buy_goods
+  belongs_to :customer
 
-  #生成下一个六位号码
-  #  #默认从000001开始
+  #随机生成一个六位号码
   def gener_number(number)
     rand(number)
   end
