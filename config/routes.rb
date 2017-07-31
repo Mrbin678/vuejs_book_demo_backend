@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources "logs"
   end
 
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+
   mount Ckeditor::Engine => '/ckeditor'
 
   namespace :interface do
