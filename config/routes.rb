@@ -47,6 +47,12 @@ Rails.application.routes.draw do
         get :user_info
       end
     end
-  end
 
+    resources :orders do
+      collection do
+        get :get_all_orders
+      end
+    end
+
+  end
 end
