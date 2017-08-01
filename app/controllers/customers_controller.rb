@@ -18,14 +18,20 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     @customer.save
+
+    redirect_to customers_path
   end
 
   def update
     @customer.update(customer_params)
+
+    redirect_to customers_path
   end
 
   def destroy
     @customer.destroy
+
+    redirect_to customers_path
   end
 
   private
