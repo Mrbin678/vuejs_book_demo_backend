@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Interface::GoodsController < Interface::ApplicationController
   def get_goods
-    goods = Good.all
+    goods = Good.all.order("created_at desc")
 
     render :json => {
       goods: goods.map { |good|

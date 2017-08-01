@@ -67,6 +67,9 @@ class Interface::PaymentsController < Interface::ApplicationController
         time = Time.now.to_datetime
         payed_price = result["total_fee"].to_f / 100.0
 
+        Rails.logger.info "== time : #{time}"
+        Rails.logger.info "== payed_price: #{payed_price}"
+
         Order.transaction do
             @order.update_attributes(
               :order_status => true,
