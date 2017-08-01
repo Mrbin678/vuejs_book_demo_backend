@@ -41,6 +41,12 @@ Rails.application.routes.draw do
         get :buy_success
       end
     end
+
+    resources :customers do
+      collection do
+        get :user_info
+      end
+    end
   end
 
 end
