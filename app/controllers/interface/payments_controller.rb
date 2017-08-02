@@ -3,21 +3,21 @@ class Interface::PaymentsController < Interface::ApplicationController
   # 企业支付
   # /interface/payments/pay?
   def pay
-    request_id = rand(1000).to_s
-    begin_time = Time.now.to_f
-    Rails.logger.info "==== 企业支付了一笔钱 ===="
-    Rails.logger.info "== request_id: #{request_id}, request begin at: #{begin_time}"
+    #request_id = rand(1000).to_s
+    #begin_time = Time.now.to_f
+    #Rails.logger.info "==== 企业支付了一笔钱 ===="
+    #Rails.logger.info "== request_id: #{request_id}, request begin at: #{begin_time}"
 
-    response = Tool.pay({
-          # 这里是以分作为单位。 微信企业支付接口是这么要求的。
-          :amount => '101', # 企业支付每次必须大于1元 钱数
-          :openid => 'o1GmjwVarmzOwWmn5J2KvCW9juMs', # 用户open_id
-          :partner_trade_no => "CompanyPay#{Time.now.to_i}" # 订单号，保证唯一 必须是33位以下的数字和字母组合
-        })
+    #response = Tool.pay({
+    #      # 这里是以分作为单位。 微信企业支付接口是这么要求的。
+    #      :amount => '101', # 企业支付每次必须大于1元 钱数
+    #      :openid => 'o1GmjwVarmzOwWmn5J2KvCW9juMs', # 用户open_id
+    #      :partner_trade_no => "CompanyPay#{Time.now.to_i}" # 订单号，保证唯一 必须是33位以下的数字和字母组合
+    #    })
 
-    render :text => response.body
+    #render :text => response.body
 
-    Rails.logger.info "== request_id: #{request_id}, request after at: #{Time.now.to_f - begin_time}"
+    #Rails.logger.info "== request_id: #{request_id}, request after at: #{Time.now.to_f - begin_time}"
   end
 
   # 用户支付
