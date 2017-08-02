@@ -64,12 +64,17 @@ class Interface::GoodsController < Interface::ApplicationController
         }
       end
     elsif params[:goods].present?
+      Rails.logger.info " goods ===== #{params[:goods].values} "
+      #render json: {
+      #   message: 'error'
+      #} and return
+
       Order.transaction do
         order.generate_order_id
         order.save
         Rails.logger.info("订单号======== #{order.order_id}")
 
-        params[:goods].each do |good|
+        params[:goods].values.each do |good|
           buy_good = BuyGood.new(
             :order_id => order.id,
             :good_id => good[:id],
