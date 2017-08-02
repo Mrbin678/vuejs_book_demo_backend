@@ -31,7 +31,7 @@ class Interface::PaymentsController < Interface::ApplicationController
 
     result = Tool.user_pay({
           # 这里是以分作为单位。 微信企业支付接口是这么要求的。
-          :total_fee => (params[:total_cost] * 100).to_i , # 支付总金额 不能有小数点(文档要求)
+          :total_fee => (params[:total_cost].to_f * 100).to_i , # 支付总金额 不能有小数点(文档要求)
           :openid => params[:open_id], # 用户open_id
           :out_trade_no => params[:order_number], # 订单号，保证唯一
           })
@@ -66,6 +66,9 @@ class Interface::PaymentsController < Interface::ApplicationController
         logger.info "==  order is not blank !!!!!----"
         time = Time.now.to_datetime
         payed_price = result["total_fee"].to_f / 100.0
+
+        Rails.logger.info "== time : #{time}"
+        Rails.logger.info "== payed_price: #{payed_price}"
 
         Order.transaction do
             @order.update_attributes(

@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>顾客姓名:</strong>
+  <%= @order.customer.try :name %>
+</p>
+
+<p>
   <strong>购买物品:</strong>
   <% @order.buy_goods.each do |buy_good| %>
   <br/>
@@ -50,6 +55,16 @@
 <p>
   <strong>卖家留言:</strong>
   <%= @order.guest_remarks %>
+</p>
+
+<p>
+  <strong>支付金额:</strong>
+  <%= @order.payed_price %>
+</p>
+
+<p>
+  <strong>支付金额:</strong>
+  <%= @order.payed_at %>
 </p>
 
 <%= link_to "编辑", edit_order_path(@order), :class => 'btn btn-primary' %>

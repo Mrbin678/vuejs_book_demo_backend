@@ -26,11 +26,11 @@ wechat:
 
   pay_url: 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers'
   key: 'daydayupDAYDAYUPdaydayup88888888'
-  desc: '思瑞明创合力保企业支付测试'
+  desc: '思瑞明创思路乐购支付测试'
   spbill_create_ip: '112.126.91.145'
   user_pay_url: 'https://api.mch.weixin.qq.com/pay/unifiedorder'
-  notify_url: 'http://api.helibao.cc/interface/payments/notify'
-  body: '思瑞明创合力保用户支付测试'
+  notify_url: 'http://ptbweb.siwei.me/interface/payments/notify'
+  body: '思瑞明创思路乐购用户支付测试'
 
 #删除判断
 can_delete: false

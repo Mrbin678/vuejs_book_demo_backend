@@ -12,6 +12,7 @@
   <thead>
     <tr>
       <th>订单号</th>
+      <th>顾客姓名</th>
       <th>商品名称</th>
       <th>收货人</th>
       <th>收货地址</th>
@@ -27,6 +28,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.order_id %></td>
+        <td><%= order.customer.try :name %></td>
         <td><%= order.buy_goods.first.good.name rescue '' %></td>
         <td><%= order.receiver_name%></td>
         <td><%= order.receiver_address %></td>
