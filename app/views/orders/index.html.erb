@@ -39,6 +39,11 @@
         <td><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
         <td>
           <%= link_to "查看", order_path(order), :class => 'btn btn-default btn-xs' %>
+          <% if order.is_dispatch == false %>
+            <%= link_to "发货", dispatch_goods_orders_path(:id => order.id), :method => :post, :class => 'btn btn-danger btn-xs' %>
+          <% else %>
+            <%= link_to "已发货", '', :class => 'btn btn-success btn-xs' %>
+          <% end %>
           <%#= link_to "编辑", edit_order_path(order), :class => 'btn btn-primary btn-xs' %>
           <%#= link_to "删除", order_path(order), :method => :delete,
                       :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-xs btn-danger' %>

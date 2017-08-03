@@ -1,11 +1,18 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :dispatch_goods]
 
   def index
     @orders = Order.all.page(params[:page]).order("created_at desc")
   end
 
   def show
+  end
+
+  def dispatch_goods
+    @order.is_dispatch = true
+    @order.save
+
+    redirect_to orders_path, notice: "发货成功"
   end
 
   #def new
