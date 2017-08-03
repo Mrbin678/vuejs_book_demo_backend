@@ -34,14 +34,16 @@ class Interface::GoodsController < Interface::ApplicationController
   end
 
   def buy
+    customer = Customer.find_by_open_id(params[:open_id])
+
     order = Order.new(
       :receiver_address => params[:mobile_user_address],
       :receiver_name => params[:mobile_user_name],
       :receiver_phone => params[:mobile_user_phone],
       :total_cost => params[:total_cost],
       :order_status => false,
-      :guest_remarks => params[:guest_remarks]
-      #:customer_id => params[:customer_id]
+      :guest_remarks => params[:guest_remarks],
+      :customer_id => customer.id
     )
     if params[:good_id].present?
       Order.transaction do
