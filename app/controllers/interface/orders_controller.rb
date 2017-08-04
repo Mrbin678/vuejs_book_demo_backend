@@ -1,16 +1,17 @@
 # -*- encoding : utf-8 -*-
 class Interface::OrdersController < Interface::ApplicationController
   def get_all_orders
+    customer = Customer.find_by_open_id(params[:open_id])
     if params[:order_status].present?
       if params[:order_status] == "true"
-        orders = Order.where("order_status = ?", true).order("created_at desc")
+        orders = Order.where("order_status = ? and customer_id = ?", true, customer.id).order("created_at desc")
       elsif params[:order_status] == "false"
-        orders = Order.where("order_status = ?", false).order("created_at desc")
+        orders = Order.where("order_status = ? and customer_id = ?", false, customer.id).order("created_at desc")
       end
     elsif params[:is_dispatch].present?
-      orders = Order.where("is_dispatch= ?", params[:is_dispatch]).order("created_at desc")
+      orders = Order.where("is_dispatch= ? and customer_id = ?", params[:is_dispatch], customer.id).order("created_at desc")
     else
-      orders = Order.all.order("created_at desc")
+      orders = Order.where("customer_id = ?", customer.id).order("created_at desc")
     end
 
     render :json => {
