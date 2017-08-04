@@ -24,10 +24,10 @@ class Interface::OrdersController < Interface::ApplicationController
           is_dispatch: order.is_dispatch,
           goods: order.buy_goods.map { |buy_good|
             {
-            good_name: buy_good.good.name,
-            price: buy_good.good.price,
-            quantity: buy_good.quantity,
-            good_image: buy_good.good.show_goods_first_image,
+            good_name: buy_good.good.try(:name),
+            price: buy_good.good.try(:price),
+            quantity: buy_good.try(:quantity),
+            good_image: buy_good.good.try(:show_goods_first_image),
             }
           }
         }
