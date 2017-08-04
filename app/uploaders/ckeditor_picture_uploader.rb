@@ -6,10 +6,9 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
-  CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
   # Choose what kind of storage to use for this uploader:
-  storage :upyun
+  storage :file
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
