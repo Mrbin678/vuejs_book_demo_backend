@@ -39,7 +39,7 @@
         <td><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
         <td>
           <%= link_to "查看", order_path(order), :class => 'btn btn-default btn-xs' %>
-          <% if order.is_dispatch == false %>
+          <% if order.is_dispatch.to_s == "false" %>
             <%= link_to "发货", dispatch_goods_orders_path(:id => order.id), :method => :post, :class => 'btn btn-danger btn-xs' %>
           <% else %>
             <%= link_to "已发货", '', :class => 'btn btn-success btn-xs' %>
