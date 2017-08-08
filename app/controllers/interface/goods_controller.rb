@@ -25,6 +25,7 @@ class Interface::GoodsController < Interface::ApplicationController
         name: good.name,
         description: good.description,
         price: good.price.to_f,
+        original_price: good.original_price.to_f,
         category_id: good.category_id
       },
       good_images: good.goods_photos.map { |photo|
