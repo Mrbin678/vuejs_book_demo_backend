@@ -9,8 +9,10 @@
   <dd><%= @good.name %></dd>
   <dt><strong>商品描述:</strong></dt>
   <dd><%= raw @good.description %></dd>
-  <dt><strong>商品单价:</strong></dt>
+  <dt><strong>商品折后价:</strong></dt>
   <dd><%= @good.price %>元</dd>
+  <dt><strong>商品原价:</strong></dt>
+  <dd><%= @good.original_price %>元</dd>
   <dt><strong>图片:</strong></dt>
   <% @good.goods_photos.each do |photo| %>
     <dd><%= image_tag photo.image_url, style: "width: 200px;"%></dd>
