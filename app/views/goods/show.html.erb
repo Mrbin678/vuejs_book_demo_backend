@@ -8,7 +8,7 @@
   <dt><strong>商品名称:</strong></dt>
   <dd><%= @good.name %></dd>
   <dt><strong>商品描述:</strong></dt>
-  <dd><%= @good.description %></dd>
+  <dd><%= raw @good.description %></dd>
   <dt><strong>商品折后价:</strong></dt>
   <dd><%= @good.price %>元</dd>
   <dt><strong>商品原价:</strong></dt>

@@ -35,7 +35,7 @@
     <% @goods.each do |good| %>
       <tr>
         <td><%= good.name %></td>
-        <td><%= good.description %></td>
+        <td><%= raw good.description %></td>
         <td><%= good.price %>元</td>
         <td><%= good.original_price %>元</td>
         <td><%= image_tag (good.goods_photos.first.try :image_url), style: "width: 100px;" %></td>
