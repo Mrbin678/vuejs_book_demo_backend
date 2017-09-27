@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :customers
 
+  resources :member_users
+
   resources :orders do
     collection do
       post :dispatch_goods
