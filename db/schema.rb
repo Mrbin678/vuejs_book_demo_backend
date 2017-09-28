@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808065003) do
+ActiveRecord::Schema.define(version: 20170928063515) do
 
   create_table "buy_goods", force: true do |t|
     t.integer  "good_id"
@@ -63,6 +63,9 @@ ActiveRecord::Schema.define(version: 20170808065003) do
     t.float    "price",          limit: 24
     t.float    "original_price", limit: 24
     t.float    "discount",       limit: 24
+    t.string   "advertisement"
+    t.integer  "inventory"
+    t.text     "good_attribute"
   end
 
   create_table "goods_photos", force: true do |t|
@@ -81,6 +84,24 @@ ActiveRecord::Schema.define(version: 20170808065003) do
     t.string   "remote_ip",      comment: "远程IP"
     t.string   "restful_method", comment: "get/post/put/delete"
   end
+
+  create_table "member_users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "member_users", ["email"], name: "index_member_users_on_email", unique: true, using: :btree
+  add_index "member_users", ["reset_password_token"], name: "index_member_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "orders", force: true do |t|
     t.string   "order_id"
