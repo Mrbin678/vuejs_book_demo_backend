@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928071353) do
+ActiveRecord::Schema.define(version: 20170928094544) do
 
   create_table "buy_goods", force: true do |t|
     t.integer  "good_id"
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20170928071353) do
     t.string   "advertisement"
     t.integer  "inventory"
     t.text     "good_attribute"
+    t.boolean  "is_display"
+    t.boolean  "is_hot"
   end
 
   create_table "goods_photos", force: true do |t|
