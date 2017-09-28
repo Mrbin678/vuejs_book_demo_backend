@@ -1,5 +1,5 @@
 class GoodsController < ApplicationController
-  before_action :set_good, only: [:show, :edit, :update, :destroy]
+  before_action :set_good, only: [:show, :edit, :update, :destroy, :set_display, :set_hot]
 
   def index
     @goods = Good.all.page(params[:page]).order("created_at desc")
@@ -42,6 +42,30 @@ class GoodsController < ApplicationController
     @good.destroy
 
     redirect_to goods_path, notice: '删除成功'
+  end
+
+  def set_display
+    if @good.is_display
+      @good.is_display = false
+      @good.save
+      redirect_to goods_path, notice: '下架成功'
+    else
+      @good.is_display = true
+      @good.save
+      redirect_to goods_path, notice: '上架成功'
+    end
+  end
+
+  def set_hot
+    if @good.is_hot
+      @good.is_hot = false
+      @good.save
+      redirect_to goods_path, notice: '取消推荐成功'
+    else
+      @good.is_hot = true
+      @good.save
+      redirect_to goods_path, notice: '商品推荐成功'
+    end
   end
 
   private

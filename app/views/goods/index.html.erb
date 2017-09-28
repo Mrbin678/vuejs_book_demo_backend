@@ -46,7 +46,17 @@
           <%= link_to "查看", good_path(good), :class => 'btn btn-default btn-xs' %>
           <%= link_to "编辑", edit_good_path(good), :class => 'btn btn-primary btn-xs' %>
           <%= link_to "删除", good_path(good), :method => :delete,
-                      :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-xs btn-danger' %>
+                      :data => { :confirm => '确定删除该商品吗?' }, :class => 'btn btn-xs btn-danger' %>
+          <% if good.is_display %>
+            <%= link_to "下架", set_display_goods_path(:id => good.id), method: "post", :class => 'btn btn-danger btn-xs' %>
+          <% else %>
+            <%= link_to "上架", set_display_goods_path(:id => good.id), method: "post", :class => 'btn btn-success btn-xs' %>
+          <% end %>
+          <% if good.is_hot %>
+            <%= link_to "取消推荐", set_hot_goods_path(:id => good.id), method: "post", :class => 'btn btn-danger btn-xs' %>
+          <% else %>
+            <%= link_to "推荐商品", set_hot_goods_path(:id => good.id), method: "post", :class => 'btn btn-success btn-xs' %>
+          <% end %>
         </td>
       </tr>
     <% end %>

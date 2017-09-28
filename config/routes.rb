@@ -14,7 +14,12 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :goods
+  resources :goods do
+    collection do
+      post :set_display
+      post :set_hot
+    end
+  end
 
   devise_for :users
 
