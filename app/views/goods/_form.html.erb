@@ -70,7 +70,7 @@
   <div class="control-group">
     <%= f.label "商品分类", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :category_id, :class => 'form-control' %>
+      <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @good.category_id), {:include_blank => "请选择分类"}, :class => 'form-control' %>
     </div>
   </div>
 
