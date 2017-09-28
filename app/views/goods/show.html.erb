@@ -7,12 +7,18 @@
 <dl class="dl-horizontal">
   <dt><strong>商品名称:</strong></dt>
   <dd><%= @good.name %></dd>
+  <dt><strong>广告标语:</strong></dt>
+  <dd><%= @good.advertisement %></dd>
+  <dt><strong>商品属性:</strong></dt>
+  <dd><%= raw @good.good_attribute %></dd>
   <dt><strong>商品描述:</strong></dt>
   <dd><%= raw @good.description %></dd>
   <dt><strong>商品折后价:</strong></dt>
   <dd><%= @good.price %>元</dd>
   <dt><strong>商品原价:</strong></dt>
   <dd><%= @good.original_price %>元</dd>
+  <dt><strong>库存:</strong></dt>
+  <dd><%= @good.inventory %>件</dd>
   <dt><strong>图片:</strong></dt>
   <% @good.goods_photos.each do |photo| %>
     <dd><%= image_tag photo.image_url, style: "width: 200px;"%></dd>

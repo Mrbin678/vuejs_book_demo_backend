@@ -26,6 +26,7 @@
       <th style="width: 400px;">商品描述</th>
       <th>商品折后价</th>
       <th>商品原价</th>
+      <th>库存(件)</th>
       <th>图片</th>
       <th>上架时间</th>
       <th>操作</th>
@@ -38,6 +39,7 @@
         <td><%= raw good.description %></td>
         <td><%= good.price %>元</td>
         <td><%= good.original_price %>元</td>
+        <td><%= good.inventory %></td>
         <td><%= image_tag (good.goods_photos.first.try :image_url), style: "width: 100px;" %></td>
         <td><%= good.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
         <td>
