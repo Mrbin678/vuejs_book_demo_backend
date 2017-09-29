@@ -4,18 +4,18 @@ load 'deploy/assets'
 SSH_USER = 'root'
 ssh_options[:port] = 35888
 set :rake, "bundle exec rake"
-set :application, "pin_tuan_bao"
+set :application, "si_lu_le_gou_web"
 set :repository, "."
 set :scm, :none
 set :deploy_via, :copy
-server = "ptbweb.siwei.tech"
+server = "101.201.234.193"
 
 role :web, server
 role :app, server
 role :db,  server, :primary => true
 role :db,  server
 
-set :deploy_to, "/opt/app/pin_tuan_bao_web"
+set :deploy_to, "/opt/app/si_lu_le_gou_web"
 default_run_options[:pty] = true
 
 # change to your username
