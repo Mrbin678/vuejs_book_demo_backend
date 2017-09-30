@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928094544) do
+ActiveRecord::Schema.define(version: 20170930090304) do
 
   create_table "buy_goods", force: true do |t|
     t.integer  "good_id"
@@ -130,6 +130,20 @@ ActiveRecord::Schema.define(version: 20170928094544) do
     t.text     "payed_response"
     t.integer  "customer_id"
     t.boolean  "is_dispatch",                 default: false
+  end
+
+  create_table "user_addresses", force: true do |t|
+    t.integer  "member_user_id"
+    t.string   "name"
+    t.string   "post_code"
+    t.string   "region"
+    t.string   "detail_address"
+    t.string   "phone_number"
+    t.string   "fixed_telephone"
+    t.string   "email"
+    t.string   "delivery_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
