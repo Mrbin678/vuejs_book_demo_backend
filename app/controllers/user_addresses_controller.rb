@@ -1,20 +1,15 @@
 class UserAddressesController < ApplicationController
   before_action :set_user_address, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
-
   def index
     @user_addresses = UserAddress.all
-    respond_with(@user_addresses)
   end
 
   def show
-    respond_with(@user_address)
   end
 
   def new
     @user_address = UserAddress.new
-    respond_with(@user_address)
   end
 
   def edit
@@ -23,17 +18,20 @@ class UserAddressesController < ApplicationController
   def create
     @user_address = UserAddress.new(user_address_params)
     @user_address.save
-    respond_with(@user_address)
+
+    redirect_to user_addresses_path
   end
 
   def update
     @user_address.update(user_address_params)
-    respond_with(@user_address)
+
+    redirect_to user_addresses_path
   end
 
   def destroy
     @user_address.destroy
-    respond_with(@user_address)
+
+    redirect_to user_addresses_path
   end
 
   private
