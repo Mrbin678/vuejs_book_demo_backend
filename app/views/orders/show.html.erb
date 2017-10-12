@@ -5,15 +5,12 @@
   订单详情
 <% end %>
 
+
 <p>
   <strong>订单号:</strong>
   <%= @order.order_id %>
 </p>
 
-<p>
-  <strong>顾客姓名:</strong>
-  <%= @order.customer.try :name %>
-</p>
 
 <p>
   <strong>购买物品:</strong>
@@ -27,20 +24,47 @@
   <% end %>
 </p>
 
-<p>
+<% if @order.customer_id.present? %>
+  <p>
+  <strong>顾客姓名:</strong>
+  <%= @order.customer.try :name %>
+  </p>
+  <p>
   <strong>收货人:</strong>
   <%= @order.receiver_name %>
-</p>
+  </p>
 
-<p>
+  <p>
   <strong>收货地址:</strong>
   <%= @order.receiver_address %>
-</p>
+  </p>
 
-<p>
+  <p>
   <strong>收货电话:</strong>
   <%= @order.receiver_phone %>
-</p>
+  </p>
+<% else %>
+  <p>
+  <strong>顾客姓名:</strong>
+  <td><%= @order.member_user.try :email %></td>
+  </p>
+
+  <p>
+  <strong>收货人:</strong>
+  <td><%= @order.user_address.try :name %></td>
+  </p>
+
+  <p>
+  <strong>收货电话:</strong>
+  <td><%= @order.user_address.try :phone_number %></td>
+  </p>
+
+  <p>
+  <strong>收货地址:</strong>
+  <td><%= @order.user_address.try :detail_address %></td>
+  </p>
+
+<% end %>
 
 <p>
   <strong>总金额:</strong>
@@ -63,7 +87,7 @@
 </p>
 
 <p>
-  <strong>支付金额:</strong>
+  <strong>支付时间:</strong>
   <%= @order.payed_at %>
 </p>
 
