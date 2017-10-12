@@ -61,7 +61,12 @@
 
   <p>
   <strong>收货地址:</strong>
-  <td><%= @order.user_address.try :detail_address %></td>
+  <td>
+    <%= @order.user_address.province.name %>-
+    <%= @order.user_address.city.name %>-
+    <%= @order.user_address.town.name %>-
+    <%= @order.user_address.try :detail_address %>
+  </td>
   </p>
 
 <% end %>
