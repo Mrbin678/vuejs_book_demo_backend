@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   has_many :buy_goods
   belongs_to :customer
+  belongs_to :user_address
 
   #随机生成一个六位号码
   def gener_number(number)
