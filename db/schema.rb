@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011021658) do
+ActiveRecord::Schema.define(version: 20171012090404) do
 
   create_table "buy_goods", force: true do |t|
     t.integer  "good_id"
@@ -137,6 +137,9 @@ ActiveRecord::Schema.define(version: 20171011021658) do
     t.text     "payed_response"
     t.integer  "customer_id"
     t.boolean  "is_dispatch",                 default: false
+    t.integer  "user_address_id"
+    t.integer  "member_user_id"
+    t.string   "mode_of_payment"
   end
 
   create_table "provinces", force: true do |t|
