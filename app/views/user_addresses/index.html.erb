@@ -7,7 +7,6 @@
       <th>用户名称</th>
       <th>收货人姓名</th>
       <th>邮政编码</th>
-      <th>地区</th>
       <th>详细地址</th>
       <th>手机号码</th>
       <th>固定电话</th>
@@ -22,8 +21,12 @@
         <td><%= user_address.member_user.email %></td>
         <td><%= user_address.name %></td>
         <td><%= user_address.post_code %></td>
-        <td><%= user_address.region %></td>
-        <td><%= user_address.detail_address %></td>
+        <td>
+          <%= user_address.province.name %>-
+          <%= user_address.city.name %>-
+          <%= user_address.town.name %>-
+          <%= user_address.try :detail_address %>
+        </td>
         <td><%= user_address.phone_number %></td>
         <td><%= user_address.fixed_telephone %></td>
         <td><%= user_address.email %></td>
