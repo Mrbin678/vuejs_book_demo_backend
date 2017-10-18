@@ -35,7 +35,9 @@ class GoodsController < ApplicationController
       Tool.upload_images(params[:photos][:image_url], @good.id, "good_id", GoodsPhoto)
     end
 
-    redirect_to goods_path, notice: '编辑成功'
+    flash[:success] = "编辑成功"
+
+    redirect_to goods_path
   end
 
   def destroy
