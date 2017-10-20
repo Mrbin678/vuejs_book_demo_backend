@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :first_categories
+
   resources :user_addresses
 
   resources :comments
