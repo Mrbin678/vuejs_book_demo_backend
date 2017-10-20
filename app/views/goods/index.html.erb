@@ -36,7 +36,7 @@
     <% @goods.each do |good| %>
       <tr>
         <td><%= good.name %></td>
-        <td><%= raw good.description %></td>
+        <td><%= raw good.good_attribute %></td>
         <td><%= good.price %>元</td>
         <td><%= good.original_price %>元</td>
         <td><%= good.inventory %></td>
