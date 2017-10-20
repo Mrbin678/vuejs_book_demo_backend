@@ -25,9 +25,6 @@ class CategoriesController < ApplicationController
   end
 
   def update
-
-    @category.category_img.destroy_all if @category.category_img.present?  #将原来的图片删掉
-
     Tool.upload_image(params[:category], :category_img)
     @category.update(category_params)
 
@@ -46,6 +43,6 @@ class CategoriesController < ApplicationController
     end
 
     def category_params
-      params.require(:category).permit(:name, :category_img)
+      params.require(:category).permit(:name, :category_img, :first_category_id)
     end
 end
