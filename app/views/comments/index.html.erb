@@ -15,7 +15,7 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.member_user.email %></td>
+        <td><%= comment.member_user.email rescue '' %></td>
         <td><%= comment.good.name %></td>
         <td><%= comment.nickname %></td>
         <td><%= comment.content %></td>

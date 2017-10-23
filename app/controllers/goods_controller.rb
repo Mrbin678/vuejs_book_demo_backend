@@ -23,8 +23,9 @@ class GoodsController < ApplicationController
     if params[:photos].present?
       Tool.upload_images(params[:photos][:image_url], @good.id, "good_id", GoodsPhoto)
     end
+    flash[:success] = "新建成功"
 
-    redirect_to goods_path, notice: '新建成功'
+    redirect_to goods_path
   end
 
   def update
@@ -34,7 +35,6 @@ class GoodsController < ApplicationController
       @good.goods_photos.destroy_all   #将原来的图片删掉
       Tool.upload_images(params[:photos][:image_url], @good.id, "good_id", GoodsPhoto)
     end
-
     flash[:success] = "编辑成功"
 
     redirect_to goods_path
@@ -42,8 +42,9 @@ class GoodsController < ApplicationController
 
   def destroy
     @good.destroy
+    flash[:success] = "删除成功"
 
-    redirect_to goods_path, notice: '删除成功'
+    redirect_to goods_path
   end
 
   def set_display

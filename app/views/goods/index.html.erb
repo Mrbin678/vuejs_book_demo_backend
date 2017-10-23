@@ -23,7 +23,8 @@
   <thead>
     <tr>
       <th>商品名称</th>
-      <th style="width: 400px;">商品描述</th>
+      <th>所属二级分类</th>
+      <!--<th style="width: 400px;">商品描述</th>-->
       <th>商品折后价</th>
       <th>商品原价</th>
       <th>库存(件)</th>
@@ -36,7 +37,8 @@
     <% @goods.each do |good| %>
       <tr>
         <td><%= good.name %></td>
-        <td><%= raw good.good_attribute %></td>
+        <!--<td><%= raw good.good_attribute %></td>-->
+        <td><%= good.category.name rescue '' %></td>
         <td><%= good.price %>元</td>
         <td><%= good.original_price %>元</td>
         <td><%= good.inventory %></td>
