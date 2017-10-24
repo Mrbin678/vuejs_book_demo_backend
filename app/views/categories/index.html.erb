@@ -24,7 +24,7 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= image_tag category.category_img, style: "width: 100px;" %></td>
-        <td><%= category.first_category.name %></td>
+        <td><%= category.first_category.try :name %></td>
         <td>
           <%= link_to "查看", category_path(category), :class => 'btn btn-default btn-xs' %>
           <%= link_to "编辑", edit_category_path(category), :class => 'btn btn-primary btn-xs' %>
